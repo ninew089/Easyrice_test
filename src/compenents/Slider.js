@@ -9,9 +9,7 @@ const useStyles = makeStyles({
   },
 });
 
-function valuetext(value) {
-  return `${value}°C`;
-}
+
 
 export default function DiscreteSlider() {
     const classes = useStyles();
@@ -36,7 +34,7 @@ export default function DiscreteSlider() {
         valueLabelDisplay="auto"
               aria-labelledby="range-slider"
               step={0.01}
-              getAriaValueText={valuetext}
+         
               min={0.00}
               max={10.00}
           />
