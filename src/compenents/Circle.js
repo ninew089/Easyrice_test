@@ -17,7 +17,7 @@ export default function Kodava(props) {
       
           <Layer >
 
-        <Images src="http://128.199.244.46:4000/getimage?image=inferNone94323.jpeg" />
+        <Images src="http://128.199.244.46:4000/getimage?image=inferNone94323.jpeg" y={-10} />
               {circles.map((circle) => (
                   <>
                       <Circle

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import { Image } from 'react-konva';
 
-
-
 export default class URLImage extends Component {
     state = {
       image: null
@@ -41,8 +39,8 @@ export default class URLImage extends Component {
               ref={node => {
                   this.imageNode = node;
               }}
-              scaleY={1 / 4}
-              scaleX={1/3.5}
+              scaleY={1 / 3.9}
+              scaleX={1/3.2}
             rotationDeg={0}
         />
       );
