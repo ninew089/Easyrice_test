@@ -12,7 +12,7 @@ function generateShapes() {
   }));
 }
 const INITIAL_STATE = generateShapes();
-console.log(INITIAL_STATE)
+
 function App() {
   const [value, setValue] = useState([0.00, 10.00]);
 
