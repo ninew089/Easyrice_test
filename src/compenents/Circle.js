@@ -1,22 +1,12 @@
-import React,{useState} from 'react';
-import { Stage, Layer, Image, Circle } from 'react-konva';
-import useImage from 'use-image';
+import React from 'react';
+import { Stage, Layer, Circle } from 'react-konva';
 import Images from "./Image"
-function generateShapes() {
-    return [...Array(50)].map((_, i) => ({
-      id: i.toString(),
-      x: Math.random() * 360,
-      y: Math.random() * 438,
-      weight: Math.random().toFixed(2),
-      isDragging: false,
-    }));
-}
-const INITIAL_STATE = generateShapes();
 
 
-export default function Kodava() {
-console.log(INITIAL_STATE)
-    const [circles, setCircles] = React.useState(INITIAL_STATE);
+
+export default function Kodava(props) {
+
+    const { circles, setCircles } = props
     const handleDragStart = (e) => {
         const id = e.target.id();
         setCircles(

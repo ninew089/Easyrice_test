@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {Typography} from '@material-ui/core';
 import Slider from '@material-ui/core/Slider';
@@ -11,15 +11,16 @@ const useStyles = makeStyles({
 
 
 
-export default function DiscreteSlider() {
+export default function DiscreteSlider(props) {
+    const {value,setValue}=props
     const classes = useStyles();
-    const [value, setValue] = useState([5, 7]);
+
     const handleChange = (event, newValue) => {
             if (((newValue[1]-newValue[0])>0.01)&&((value[1]-value[0])>0.01)) {
                 setValue(newValue)
             } 
     };
-
+ 
   return (
     <div className={classes.root}>
       <Typography id="discrete-slider-small-steps" gutterBottom>
