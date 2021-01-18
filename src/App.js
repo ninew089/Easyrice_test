@@ -7,19 +7,29 @@ function generateShapes() {
     id: i.toString(),
     x: Math.random() * 360,
     y: Math.random() * 438,
-    weight: Math.random().toFixed(2),
+    weight: (Math.random()*10).toFixed(2),
     isDragging: false,
   }));
 }
 const INITIAL_STATE = generateShapes();
 function App() {
-  const [value, setValue] = useState([5, 7]);
+  const [value, setValue] = useState([0.00, 10.00]);
 
   const [circles, setCircles] = useState(INITIAL_STATE);
+  
+  const data = circles.filter((circle) => {
+    if ((parseFloat(circle.weight) >= value[0] && parseFloat(circle.weight) <= value[1])) {
+
+      return circle
+    }
+
+
+  })
+
   return (
     <div className="App">
       <header className="App-header">
-        <Kodava circles={circles} setCircles={setCircles}/>
+        <Kodava circles={data} setCircles={setCircles}/>
         <Slider value={value} setValue={setValue}/>
       </header>
     </div>
