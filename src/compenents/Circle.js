@@ -7,7 +7,7 @@ function generateShapes() {
       id: i.toString(),
       x: Math.random() * 360,
       y: Math.random() * 438,
-  
+      weight: Math.random().toFixed(2),
       isDragging: false,
     }));
 }
