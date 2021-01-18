@@ -8,23 +8,21 @@ function generateShapes() {
     x: Math.random() * 360,
     y: Math.random() * 438,
     weight: (Math.random()*10).toFixed(2),
-    isDragging: false,
+
   }));
 }
 const INITIAL_STATE = generateShapes();
+console.log(INITIAL_STATE)
 function App() {
   const [value, setValue] = useState([0.00, 10.00]);
 
   const [circles, setCircles] = useState(INITIAL_STATE);
   
   const data = circles.filter((circle) => {
-    if ((parseFloat(circle.weight) >= value[0] && parseFloat(circle.weight) <= value[1])) {
-
-      return circle
-    }
-
-
-  })
+  return ((parseFloat(circle.weight) >= value[0] && parseFloat(circle.weight) <= value[1])) 
+}
+    
+  )
 
   return (
     <div className="App">

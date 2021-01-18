@@ -20,20 +20,17 @@ export default class URLImage extends Component {
       this.image.removeEventListener('load', this.handleLoad);
     }
     loadImage() {
-      // save to "this" to remove "load" handler on unmount
+   
       this.image = new window.Image();
       this.image.src = this.props.src;
       this.image.addEventListener('load', this.handleLoad);
     }
     handleLoad = () => {
-      // after setState react-konva will update canvas and redraw the layer
-      // because "image" property is changed
+      
       this.setState({
         image: this.image
       });
-      // if you keep same image object during source updates
-      // you will have to update layer manually:
-      // this.imageNode.getLayer().batchDraw();
+ 
     };
     render() {
       return (
