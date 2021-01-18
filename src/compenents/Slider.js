@@ -16,7 +16,7 @@ export default function DiscreteSlider(props) {
     const classes = useStyles();
 
     const handleChange = (event, newValue) => {
-            if (((newValue[1]-newValue[0])>0.01)&&((value[1]-value[0])>0.01)) {
+            if (((newValue[1]-newValue[0])>0.00)&&((value[1]-value[0])>0.00)) {
                 setValue(newValue)
             } 
     };

@@ -6,7 +6,7 @@ import Images from "./Image"
 
 export default function Kodava(props) {
 
-    const { circles, setCircles } = props
+    const { circles } = props
 
  
     

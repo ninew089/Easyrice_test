@@ -1,48 +1,48 @@
-import React, { Component } from 'react';
+import React, { useState,useRef,useEffect } from 'react';
 
 import { Image } from 'react-konva';
 
-export default class URLImage extends Component {
-    state = {
-      image: null
-    };
-    componentDidMount() {
-      this.loadImage();
-    }
-    componentDidUpdate(oldProps) {
-      if (oldProps.src !== this.props.src) {
-        this.loadImage();
+export default function URLImage(props) {
+  const imageRef = useRef(null);
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    loadImage();
+    return () => {
+      if(imageRef.current) {
+        imageRef.current.removeEventListener('load', handleLoad);
       }
     }
-    componentWillUnmount() {
-      this.image.removeEventListener('load', this.handleLoad);
-    }
-    loadImage() {
-   
-      this.image = new window.Image();
-      this.image.src = this.props.src;
-      this.image.addEventListener('load', this.handleLoad);
-    }
-    handleLoad = () => {
-      
-      this.setState({
-        image: this.image
-      });
- 
-    };
-    render() {
-      return (
-        <Image
-              x={this.props.x}
-              y={this.props.y}
-              image={this.state.image}
-              ref={node => {
-                  this.imageNode = node;
-              }}
-              scaleY={1 / 3.9}
-              scaleX={1/3.2}
-            rotationDeg={0}
-        />
-      );
-    }
+// eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+  loadImage();
+// eslint-disable-next-line
+  }, [props.src])
+
+  function handleLoad() {
+    setImage(imageRef.current);
   }
+
+  function loadImage() {
+    const img = new window.Image();
+    img.src = props.src;
+    img.crossOrigin="Anonymous";
+    imageRef.current = img;
+    imageRef.current.addEventListener('load', handleLoad);
+  }
+  
+    
+    return (
+        <Image
+        x={props.x}
+        y={props.y}
+        image={image}
+        scaleY={1 / 3.9}
+        scaleX={1/3.2}
+        rotationDeg={0}
+  />
+
+    )
+}
